@@ -13,8 +13,27 @@ class WorkoutController < ApplicationController
             reps: params[:reps]
         )
         new_workout.to_json
-
     end
+
+    patch "/workouts/:id" do
+        workout = Workout.find(params[:id])
+        workout.update(
+            user_id: params[:user_id],
+            exercise_id: params[:exercise_id],
+            set_num: params[:set_num],
+            weight: params[:weight],
+            reps: params[:reps]
+        )
+        workout.to_json
+    end
+
+    delete "/workouts/:id" do
+        workout = Workout.find(params[:id])
+        workout.destroy
+        workout.to_json
+    end
+
+
 
 
 end
