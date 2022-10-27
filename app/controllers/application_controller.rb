@@ -15,6 +15,16 @@ class ApplicationController < Sinatra::Base
     user.to_json
   end
 
+  patch "/users/:id" do
+    user = User.find(params[:id])
+    user.update(user_name: params[:user_name])
+    user.to_json
+  end
 
-
+  delete "/users/:id" do
+    user = User.find(params[:id])
+    user.destroy
+    user.to_json
+  end
+  
 end
