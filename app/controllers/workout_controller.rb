@@ -1,7 +1,11 @@
 class WorkoutController < ApplicationController
 
     get "/workouts" do 
-        Workout.all.to_json
+        Workout.all.to_json(include: {
+            exercise: {
+                only: :exercise_name
+            }})
+       
     end
 
     post "/workouts" do
