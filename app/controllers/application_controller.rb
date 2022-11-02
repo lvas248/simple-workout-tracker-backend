@@ -24,7 +24,9 @@ class ApplicationController < Sinatra::Base
   delete "/users/:id" do
     user = User.find(params[:id])
     user.destroy
+    user.workouts.each do |wrk|
+      wrk.destroy
+    end
     user.to_json
   end
-  
 end
