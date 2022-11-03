@@ -7,7 +7,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/users" do
-    User.all.to_json(include: {
+    User.all.to_json(include: [
+      {
       workouts: {
         include: {
           exercise: {
@@ -15,7 +16,9 @@ class ApplicationController < Sinatra::Base
           }
         }
       }
-    })
+    },
+    :exercises
+    ])
   end
   
   post "/users" do

@@ -5,7 +5,11 @@ class ExerciseController < ApplicationController
     end
 
     post "/exercises" do
-        exercise = Exercise.create(exercise_name: params[:exercise_name])
+        exercise = Exercise.create({
+            exercise_name: params[:exercise_name],
+            user_id: params[:user_id]
+        }
+            )
         exercise.to_json
     end
 
