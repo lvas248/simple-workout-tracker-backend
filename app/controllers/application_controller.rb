@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
         }
       }
     },
-    :exercises
+      :exercises
     ])
   end
   
