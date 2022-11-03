@@ -7,18 +7,42 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/users" do
-    User.all.to_json
+    User.all.to_json(include: {
+      workouts: {
+        include: {
+          exercise: {
+            only: :exercise_name
+          }
+        }
+      }
+    })
   end
   
   post "/users" do
     user = User.create(user_name: params[:user_name])
-    user.to_json
+    user.to_json(include: {
+      workouts: {
+        include: {
+          exercise: {
+            only: :exercise_name
+          }
+        }
+      }
+    })
   end
 
   patch "/users/:id" do
     user = User.find(params[:id])
     user.update(user_name: params[:user_name])
-    user.to_json
+    user.to_json(include: {
+      workouts: {
+        include: {
+          exercise: {
+            only: :exercise_name
+          }
+        }
+      }
+    })
   end
 
   delete "/users/:id" do
