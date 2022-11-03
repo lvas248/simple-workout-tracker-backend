@@ -14,4 +14,4 @@ use Rack::JSONBodyParser
 # Our application
 run ApplicationController
 use ExerciseController
-use WorkoutController
+
