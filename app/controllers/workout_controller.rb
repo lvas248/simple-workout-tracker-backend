@@ -16,7 +16,11 @@ class WorkoutController < ApplicationController
             weight: params[:weight],
             reps: params[:reps]
         )
-        new_workout.to_json
+        new_workout.to_json( include: {
+            exercise: {
+                only: :exercise_name
+            }
+        })
     end
 
     patch "/workouts/:id" do
@@ -28,7 +32,10 @@ class WorkoutController < ApplicationController
             weight: params[:weight],
             reps: params[:reps]
         )
-        workout.to_json
+        workout.to_json(include: {
+            exercise: {
+                only: :exercise_name
+            }})
     end
 
     delete "/workouts/:id" do
