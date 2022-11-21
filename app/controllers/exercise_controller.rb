@@ -20,9 +20,7 @@ class ExerciseController < ApplicationController
     delete "/exercises/:id" do
         exercise = Exercise.find(params[:id])
         # destroy all workouts associated with exercise
-        exercise.workouts.each do |wrk|
-            wrk.destroy
-        end
+        exercise.workouts.destroy_all
         # destroy exercise
         exercise.destroy
         exercise.to_json
