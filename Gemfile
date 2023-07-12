@@ -35,6 +35,8 @@ gem 'pg', '~> 1.1'
 # Require all files in a folder
 gem "require_all", "~> 3.0"
 
+gem 'sinatra-activerecord'
+
 # These gems will only be used when we are running the application locally
 group :development do
   gem "pry", "~> 0.14.1"
